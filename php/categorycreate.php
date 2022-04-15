@@ -1,9 +1,9 @@
 <?php
-	include ('categoryCRUD.php');
+	include ('CRUD.php');
 
 	if(isset($_POST['add_category'])) {
 		$obj = new categoryCRUD();
-		$success = $obj->CreateCategory($_POST['id_category'],$_POST['name'],$_POST['tag'],$_POST['description']);
+		$success = $obj->CreateCategory($_POST['id_category'],$_POST['name'],$_POST['tag'],$_POST['description'], $_POST['close_date']);
 		header('Location: categoryread.php');
 
 
@@ -21,7 +21,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div class="container">
   <h2>Vertical (basic) form</h2>
   <form action="<?php echo $_SERVER['PHP_SELF'] ?> "method ="POST" >
@@ -40,6 +39,11 @@
       <label for="Description">Description: </label>
       <input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
     </div>
+		<div>
+			<label for="CloseDate">Close Date: </label>
+			<input type="date" id="description"  name="close_date">
+		</div>
+
 
     <button type="submit" class="btn btn-default" name="add_category">Submit</button>
   </form>

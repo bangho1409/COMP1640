@@ -1,5 +1,5 @@
 <?php
-		include ('ideaCRUD.php');
+		include ('CRUD.php');
 		/*	$obj = new ideaCRUD();
 			$success = $obj-> DeleteIdea($_GET['id_idea']);
 			header('Location: read.php');
@@ -8,7 +8,7 @@
 			$id=$_GET['id_idea'];
 			$sql = "DELETE FROM idea WHERE id_idea ='$id'";
 			if ($connect->query($sql) === TRUE) {
-			echo "Xoá thành công!";
+			header('Location: read.php');
 			} else {
 			echo "Error updating record: " . $connect->error;
 			}

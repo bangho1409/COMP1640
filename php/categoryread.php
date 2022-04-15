@@ -1,20 +1,10 @@
 <?php
-	include('categoryCRUD.php');
+	include('CRUD.php');
 	$obj = new categoryCRUD();
 	//read data
 	$list = $obj->ReadCategory();
 	if($list)
-	{
-	/*	foreach($list as $item)
-		{
-			$content = "";
-			foreach($item as $key => $value)
-			{
-				$content = $content . $key . ": " . $value . "<br>";
-			}
-			echo $content . "<br>";
-		}
-	} */
+{
 
 ?>
 <!DOCTYPE html>
@@ -38,11 +28,11 @@
 				<td><?php echo $item['name'] ?> </td>
         <td><?php echo $item['tag'] ?> </td>
 				<td><?php echo $item['description'] ?> </td>
+				<td><?php echo $item['close_date'] ?> </td>
 				<td><a href="categoryupdate.php?id_category=<?php echo $item['id_category'];?>">Edit</a> &nbsp; | &nbsp; <a href="categorydelete.php?id_category=<?php echo $item['id_category'];?>">Delete</a>  </td>
 			</div>
 			<?php } ?>
 			<?php } ?>
-		</table>
 	</div>
 </body>
 </html>

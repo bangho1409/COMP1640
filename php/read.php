@@ -1,20 +1,11 @@
 <?php
-	include('ideaCRUD.php');
+	include('CRUD.php');
 	$obj = new ideaCRUD();
 	//read data
 	$list = $obj->ReadIdea();
 	if($list)
 	{
-	/*	foreach($list as $item)
-		{
-			$content = "";
-			foreach($item as $key => $value)
-			{
-				$content = $content . $key . ": " . $value . "<br>";
-			}
-			echo $content . "<br>";
-		}
-	} */
+
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +30,7 @@
         <td><?php echo $item['content'] ?> </td>
 				<td><?php echo $item['created_date'] ?> </td>
 				<td><?php echo $item['last_modified_date'] ?> </td>
-				<td><a href="updateidea.php?id_idea=<?php echo $item['id_idea'];?>">Edit</a> &nbsp; | &nbsp; <a href="deleteidea.php?id_idea=<?php echo $item['id_idea'];?>">Delete</a>  </td>
+				<td>   <a href="comment.php?id_idea=<?php echo $item['id_idea'];?>">Comment</a>  &nbsp; | &nbsp; <a href="updateidea.php?id_idea=<?php echo $item['id_idea'];?>">Edit</a> &nbsp; | &nbsp; <a href="deleteidea.php?id_idea=<?php echo $item['id_idea'];?>">Delete</a>  </td>
 			</div>
 			<?php } ?>
 			<?php } ?>

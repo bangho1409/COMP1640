@@ -19,13 +19,12 @@ include ('../php/dbconnect.php');
 			<div class="clear"> </div>
 			<div class="header-top-nav">
 				<ul>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="login.php">Login</a></li>
           <li><a href="createidea.php">Idea</a></li>
           <li><a href="read.php">Read Idea</a></li>
           <li><a href="categorycreate.php">CreateCategory</a></li>
           <li><a href="categoryread.php">ReadCategory</a></li>
           <li><a href="uploadfile.php">zip file</a></li>
+          <li> <a href="test.php">Select Tag</a></li>
         </ul>
       <div class="clear" ></div>
     </div>
