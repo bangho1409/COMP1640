@@ -60,8 +60,6 @@ if(isset($_POST['download']))
 }
 
 
-
-
 ?>
 
 <!Doctype html>
