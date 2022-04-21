@@ -1,6 +1,5 @@
 <?php
 include 'CRUD.php';
-include 'reaction.php';
 
 $obj = new ideaCRUD();
 $objtag = new categoryCRUD();
@@ -116,7 +115,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <a class="media-left"><img class="img-circle img-sm" alt="Profile Picture" src="images/ava.jpg"></a>
         <div class="media-body">
           <div class="mar-btm">
-            <a class="btn-link text-semibold media-heading box-inline"><?php echo $comment['username'] ?></a>
+          <!--  <a class="btn-link text-semibold media-heading box-inline"><?php echo $comment['username'] ?> </a> -->
             <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> <?php echo $comment['last_modified_date'] ?></p>
           </div>
           <p><?php echo $comment['content'] ?></p>
@@ -127,12 +126,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
 <?php } ?>
 
-
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-32"></div>
-
-
 <!-- Footer -->
-<footer class="w3-container w3-padding-16 w3-center w3-opacity">
+<footer class="w3-container w3-red w3-center">
   <div class="w3-xlarge w3-padding-32">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>

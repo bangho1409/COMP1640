@@ -69,11 +69,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <h2 class="w3-center">Phan Hoàng Hiệp</h2>
 <h2 class="w3-center">Trần Thành Hoàng</h2>
 
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-32"></div>
-
-
 <!-- Footer -->
-<footer class="w3-container w3-padding-16 w3-center w3-opacity">
+<footer class="w3-container w3-red w3-center">
   <div class="w3-xlarge w3-padding-32">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>

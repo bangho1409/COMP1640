@@ -135,7 +135,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-leftbar{border-left:6px solid #ccc!important}.w3-rightbar{border-right:6px solid #ccc!important}
 .w3-section,.w3-code{margin-top:16px!important;margin-bottom:16px!important}
 .w3-margin{margin:16px!important}.w3-margin-top{margin-top:16px!important}.w3-margin-bottom{margin-bottom:16px!important}
-.w3-margin-top-post{margin-top:72px!important}
 .w3-margin-left{margin-left:16px!important}.w3-margin-right{margin-right:16px!important}
 .w3-padding-small{padding:4px 8px!important}.w3-padding{padding:8px 16px!important}.w3-padding-large{padding:12px 24px!important}
 .w3-padding-16{padding-top:16px!important;padding-bottom:16px!important}.w3-padding-24{padding-top:24px!important;padding-bottom:24px!important}
@@ -248,13 +247,14 @@ body{
   min-height: 100vh;
   background: #grey;
 }
+
+
 ::selection{
   color: #fff;
   background: #grey;
 }
 .container{
   width: 500px;
-  height: 700px;
   overflow: hidden;
   background: #fff;
   border-radius: 10px;
@@ -420,72 +420,9 @@ form textarea:valid ~ button:hover{
 .container.active .audience{
   opacity: 1;
 }
-.audience header{
-  padding: 17px 0;
-  text-align: center;
-  position: relative;
-  border-bottom: 1px solid #bfbfbf;
-}
-.audience header .arrow-back{
-  position: absolute;
-  left: 25px;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  font-size: 15px;
-  color: #747474;
-  border-radius: 50%;
-  background: #E4E6EB;
-}
-.audience header p{
-  font-size: 22px;
-  font-weight: 600;
-}
-.audience .content{
-  margin: 20px 25px 0;
-}
-.audience .content p{
-  font-size: 17px;
-  font-weight: 650;
-}
-.audience .content span{
-  font-size: 16px;
-  color: #65676B;
-  font-weight: 500;
-}
-.audience .list{
-  margin: 15px 16px 20px;
-  list-style: none;
-}
-.audience .list li{
-  display: flex;
-  cursor: pointer;
-  margin-bottom: 5px;
-  padding: 12px 10px;
-  border-radius: 7px;
-  align-items: center;
-  justify-content: space-between;
-}
 .list li.active,
 .audience .list li.active:hover{
   background: #E5F1FF;
-}
-.audience .list li:hover{
-  background: #f0f1f4;
-}
-.audience .list li .column .icon{
-  height: 50px;
-  width: 50px;
-  color: #333;
-  font-size: 23px;
-  border-radius: 50%;
-  background: #E4E6EB;
-}
-.audience .list li.active .column .icon{
-  background: #cce4ff;
-}
-.audience .list li .column .details{
-  margin-left: 15px;
 }
 .list li .column .details p{
   font-weight: 750;

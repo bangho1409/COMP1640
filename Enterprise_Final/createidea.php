@@ -1,8 +1,11 @@
 <?php
-	include ('CRUD.php');
+	include 'CRUD.php';
 
 	$obj = new categoryCRUD();
 	$list = $obj->ReadCategory();
+
+
+
 
 	if(isset($_POST['add'])) {
 			$timenow = date("Y-m-d H:i:s");
@@ -34,7 +37,6 @@ if ($rowfile['close_date'] >= $timenow) {
 		 		}
 		 }
 	 }
-
 
 ?>
 
@@ -75,17 +77,13 @@ if ($rowfile['close_date'] >= $timenow) {
             <div class="content">
               <img src="images/ava.jpg" alt="user's avatar">
               <div class="details">
-                <p></p>
+                <p>Select Category</p>
                 <div class="privacy">
 									<select name="id_category">
 					 			 	<?php foreach($list as $item) { ?>
 					 			 	<option value="<?php echo $item['id_category']  ?>"><?php echo $item['tag'] ?></option>
 					 			 	<?php } ?>
 					 			 </select>
-                </div>
-                <div class="department">
-                  <i class="fas fa-laptop-house"></i>
-                  <span>IT Department</span>
                 </div>
               </div>
             </div>
@@ -101,7 +99,7 @@ if ($rowfile['close_date'] >= $timenow) {
               </ul>
             </div>
               <input type="checkbox" required name="checkbox"value="check" id="agree" /> I have read and agree to the <a href="term.php" target="_blank">Terms and Conditions and Privacy Policy</a>
-            <button type="submit" class="btn btn-default" name="add">Post</button>
+            <button type="submit" class="w3-margin-top-post btn btn-default" name="add">Post</button>
           </form>
 				</div>
 					<script>

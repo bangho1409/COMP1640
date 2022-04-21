@@ -53,7 +53,7 @@
             <div >
 								<input class="description" type="date" name="close_date">
             </div>
-            <button type="submit" class="btn btn-default" name="add_category" >Post</button>
+            <button type="submit" class="w3-margin-top btn btn-default" name="add_category" >Post</button>
           </form>
       </div>
     </div>

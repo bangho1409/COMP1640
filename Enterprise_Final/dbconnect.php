@@ -7,7 +7,7 @@ if ($connect === false) {
 
 }
 else {
-  
+
 }
 session_start ();
 

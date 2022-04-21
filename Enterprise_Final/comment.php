@@ -14,7 +14,7 @@ $userRow=mysqli_fetch_array($res);
 <head>
     <meta charset="utf-8">
     <title>IdeaZ</title>
-    <link rel="stylesheet" href="style_submit.css">
+    <link rel="stylesheet" href="style_comment.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
@@ -42,7 +42,7 @@ $userRow=mysqli_fetch_array($res);
 		<div class="container">
 			<div class="wrapper">
 				<section class="post">
-					<header>Comment Submission</header>
+					<header>Comment</header>
 					<form method ="POST">
 						<div class="content">
 							<img src="images/ava.jpg" alt="user's avatar">
@@ -58,7 +58,7 @@ $userRow=mysqli_fetch_array($res);
 						<input type="hidden" value="<?php echo date('Y-m-d H:i:s'); ?>" name="created_date">
 						<input type="hidden" value="<?php echo date('Y-m-d H:i:s'); ?>" name="last_modified_date">
 
-						<button type="submit" class="btn btn-default" name="addcomment">Comment</button>
+						<button type="submit" class="btn w3-button btn-default" name="addcomment">Comment</button>
 					</form>
 				</div>
 <?php

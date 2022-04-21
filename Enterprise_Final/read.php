@@ -76,6 +76,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <!-- Filter -->
 <div class="dropdown w3-padding-16">
+	<form method="post" action="export.php">
+		<input  type="submit" name="exportidea" value="Export Idea" class="w3-margin-bottom w3-round-medium w3-button w3-green btn btn-success" />
+		<input  type="submit" name="exportuser" value="Export User" class="w3-margin-bottom w3-round-medium w3-button w3-green btn btn-success" />
+	</form>
   <button onclick="myFilter()" class="dropbtn w3-round">Filters</button>
   <div id="myDropdown" class="dropdown-content">
     <a value= "trending" href="#">Trending</a>
@@ -114,18 +118,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	<?php if($_SESSION['id_role'] == 1 OR $_SESSION['id_role'] == 6) { ?>
 	<a href="updateidea.php?id_idea=<?php echo $item['id_idea'];?>">Edit</a>&nbsp;  &nbsp;
 	<a href="deleteidea.php?id_idea=<?php echo $item['id_idea'];?>">Delete</a> &nbsp;  &nbsp;
-	<form method="post" action="export.php">
-		<input  type="submit" name="exportidea" value="Export Idea" class="btn btn-success" />
-		<input  type="submit" name="exportuser" value="Export User" class="btn btn-success" />
-	</form>
+
 </p>
 <?php } ?>
 <?php } ?>
 <?php } ?>
 
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-32"></div>
 <!-- Footer -->
-<footer class="w3-container w3-padding-16 w3-center w3-opacity">
+<footer class="w3-container w3-red w3-center">
   <div class="w3-xlarge w3-padding-32">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
