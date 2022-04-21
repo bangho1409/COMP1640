@@ -42,7 +42,7 @@ $userRow=mysqli_fetch_array($res);
 		<div class="container">
 			<div class="wrapper">
 				<section class="post">
-					<header>Idea Submission</header>
+					<header>Comment Submission</header>
 					<form method ="POST">
 						<div class="content">
 							<img src="images/ava.jpg" alt="user's avatar">
