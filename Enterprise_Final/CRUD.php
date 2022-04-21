@@ -53,12 +53,11 @@ class ideaCRUD{
                                      return $success;
   				}
 
-
-  					$query = "INSERT INTO idea (id_idea,title,content,created_date,last_modified_date,username,id_category) VALUES ('{$id_idea}','{$title}','{$content}',NOW(),NOW(),'{$username}','{$id_category}')";
-  					$res = mysqli_query($conn,$query);
-            $row  = $res->num_rows;
-  					$succcess = $row[0];
-  					mysqli_close($conn);
+              $query = "INSERT INTO idea (id_idea,title,content,created_date,last_modified_date,username,id_category) VALUES ('{$id_idea}','{$title}','{$content}',NOW(),NOW(),'{$username}','{$id_category}')";
+    					$res = mysqli_query($conn,$query);
+              $row  = $res->num_rows;
+    					$succcess = $row[0];
+              mysqli_close($conn);
 
   			}Catch(Exception $e) {
   				$this -> msg =$e->getMessage();

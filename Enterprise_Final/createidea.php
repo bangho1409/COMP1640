@@ -4,22 +4,24 @@
 	$obj = new categoryCRUD();
 	$list = $obj->ReadCategory();
 
-
 	if(isset($_POST['add'])) {
+			$timenow = date("Y-m-d H:i:s");
+			$selectedtag = $_POST['id_category'];
+			$filequery = "SELECT close_date FROM category WHERE id_category = '$selectedtag'";
+			$resfile = mysqli_query($connect,$filequery);
+			$rowfile = mysqli_fetch_assoc($resfile);
+
 			$obj = new ideaCRUD();
+			$file = rand(1000,100000)."-".$_FILES['file']['name'];
+			$file_loc = $_FILES['file']['tmp_name'];
+			$folder="uploads/";
+			$new_file_name = strtolower($file);
+			$final_file=str_replace(' ','-',$new_file_name);
+			$id = $_SESSION['id_idea'] + 1;
+
+if ($rowfile['close_date'] >= $timenow) {
 			$success = $obj->CreateIdea($_POST['id_idea'],$_POST['title'],$_POST['content'],$_POST['created_date'],$_POST['last_modified_date'],$_SESSION['username'], $_POST['id_category']);
 			header('Location: read.php');
-		 }
-
-  if(isset($_POST['add']))
-		 {
-		  $file = rand(1000,100000)."-".$_FILES['file']['name'];
-		   $file_loc = $_FILES['file']['tmp_name'];
-		  $folder="uploads/";
-		  $new_file_name = strtolower($file);
-		  $final_file=str_replace(' ','-',$new_file_name);
-
-			$id = $_SESSION['id_idea'] + 1;
 		  if(move_uploaded_file($file_loc,$folder.$final_file))
 		  {
 		   $sql="INSERT INTO file (file_path,last_modified_date,id_idea) VALUES('$final_file',NOW(), '{$id}')";
@@ -30,7 +32,9 @@
 		  {
 		   echo "Error.Please try again";
 		 		}
-		 	}
+		 }
+	 }
+
 
 ?>
 
@@ -99,6 +103,7 @@
               <input type="checkbox" required name="checkbox"value="check" id="agree" /> I have read and agree to the <a href="term.php" target="_blank">Terms and Conditions and Privacy Policy</a>
             <button type="submit" class="btn btn-default" name="add">Post</button>
           </form>
+				</div>
 					<script>
 					// Used to toggle the menu on small screens when clicking on the menu button
 					function myFunction() {
