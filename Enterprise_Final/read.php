@@ -15,6 +15,8 @@
 	$list = $obj->ReadIdea();
 	$listtag = $objtag->ReadCategory();
 
+
+
 ?>
 
 
@@ -89,7 +91,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <p class="blur w3-padding-32 w3-large w3-text-white w3-center"> <?php if ($listtag){foreach ($listtag as $itemtag ) {echo $itemtag['tag'];}}?>  </p>
 </div>
 
-
 <?php if($list)
 { foreach($list as $item) { ?>
 <!-- Grid -->
@@ -112,10 +113,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	<a href="comment.php?id_idea=<?php echo $item['id_idea'];?>">Comment</a> &nbsp;  &nbsp;
 	<?php if($_SESSION['id_role'] == 1 OR $_SESSION['id_role'] == 6) { ?>
 	<a href="updateidea.php?id_idea=<?php echo $item['id_idea'];?>">Edit</a>&nbsp;  &nbsp;
-	<a href="deleteidea.php?id_idea=<?php echo $item['id_idea'];?>">Delete</a>
-	<?php } ?>
+	<a href="deleteidea.php?id_idea=<?php echo $item['id_idea'];?>">Delete</a> &nbsp;  &nbsp;
+	<form method="post" action="export.php">
+		<input  type="submit" name="exportidea" value="Export Idea" class="btn btn-success" />
+		<input  type="submit" name="exportuser" value="Export User" class="btn btn-success" />
+	</form>
 </p>
-
+<?php } ?>
+<?php } ?>
 <?php } ?>
 
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-32"></div>
@@ -130,7 +135,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <i class="fa fa-linkedin w3-hover-opacity"></i>
  </div>
 </footer>
-
 
 
 
@@ -155,4 +159,3 @@ function myFilter() {
 
 </body>
 </html>
-<?php } ?>

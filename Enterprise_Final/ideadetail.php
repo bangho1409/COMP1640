@@ -174,9 +174,6 @@ window.onclick = function(event) {
   }
 }
 
- src="reaction.js"
-
-
 </script>
 
 </body>

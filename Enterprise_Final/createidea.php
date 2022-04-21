@@ -15,11 +15,11 @@
 		 {
 		  $file = rand(1000,100000)."-".$_FILES['file']['name'];
 		   $file_loc = $_FILES['file']['tmp_name'];
-		  $folder="uploads";
+		  $folder="uploads/";
 		  $new_file_name = strtolower($file);
 		  $final_file=str_replace(' ','-',$new_file_name);
-			$id = $_SESSION['id_idea'];
 
+			$id = $_SESSION['id_idea'] + 1;
 		  if(move_uploaded_file($file_loc,$folder.$final_file))
 		  {
 		   $sql="INSERT INTO file (file_path,last_modified_date,id_idea) VALUES('$final_file',NOW(), '{$id}')";
@@ -31,7 +31,9 @@
 		   echo "Error.Please try again";
 		 		}
 		 	}
+
 ?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -60,8 +62,6 @@
         <a href="#" class="w3-bar-item w3-button w3-padding-large">About</a>
       </div>
     </div>
-
-
 
 		<div class="container">
       <div class="wrapper">
@@ -93,7 +93,7 @@
 						<input type="hidden" value="<?php echo date('Y-m-d H:i:s'); ?>" name="last_modified_date">
             <div class="options">
               <ul class="list">
-                <input type="file" name="file" >
+                <input type="file" accept=".zip" name="file" >
               </ul>
             </div>
               <input type="checkbox" required name="checkbox"value="check" id="agree" /> I have read and agree to the <a href="term.php" target="_blank">Terms and Conditions and Privacy Policy</a>
@@ -129,7 +129,6 @@
 					    }
 					  }
 					}
-
 					function openForm() {
 					  document.getElementById("myForm").style.display = "block";
 					}

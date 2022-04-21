@@ -1,7 +1,7 @@
 <?php
 $connect = mysqli_connect('localhost', 'root', '', 'webenterprise2');
 // if user clicks like or dislike button
-$id_user = 2;
+$id_user = $_SESSION['id_user'];
 
 if (isset($_POST['action'])) {
 
