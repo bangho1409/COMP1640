@@ -61,21 +61,35 @@ $userRow=mysqli_fetch_array($res);
 						<button type="submit" class="btn w3-button btn-default" name="addcomment">Comment</button>
 					</form>
 				</div>
+
+
 <?php
 if (isset($_POST['addcomment'])){
 $id=$_GET['id_idea'];
 $user=$_POST['username'];
 $content = $_POST['content'];
-// Check connection
-if ($connect->connect_error) {
-die("Connection failed: " . $connect->connect_error);
-}
+
+
+//send email func
+			$receiver = "receivercousay123@gmail.com";
+			$subject = "New Notification for You";
+			$body = "New comment in your idea";
+			$sender = "From: IdeaZ";
+			if(mail($receiver, $subject, $body, $sender)){
+    		echo "Email sent successfully to $receiver";
+			}else{
+    		echo "Sorry, failed while sending mail!";
+			}
+
+
 $sql = "INSERT INTO comment (content, created_date, last_modified_date, username, id_idea) VALUES ('{$content}', NOW(), NOW(),'{$user}', '{$id}') ";
 if ($connect->query($sql) === TRUE) {
 	header('Location: read.php');
-} else {
-echo "Error updating record: " . $connect->error;
 }
+
+
+
+
 $connect->close();
 }
 ?>

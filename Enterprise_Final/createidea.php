@@ -25,6 +25,19 @@
 if ($rowfile['close_date'] >= $timenow) {
 			$success = $obj->CreateIdea($_POST['id_idea'],$_POST['title'],$_POST['content'],$_POST['created_date'],$_POST['last_modified_date'],$_SESSION['username'], $_POST['id_category']);
 			header('Location: read.php');
+
+//send email function
+			$receiver = "qacousay123@gmail.com";
+			$subject = "New Idea Created By User";
+			$body = "New Idea Posted to the System";
+			$sender = "From: IdeaZ system New Idea";
+			if(mail($receiver, $subject, $body, $sender)){
+    		echo "Email sent successfully to $receiver";
+			}else{
+    		echo "Sorry, failed while sending mail!";
+			}
+
+
 		  if(move_uploaded_file($file_loc,$folder.$final_file))
 		  {
 		   $sql="INSERT INTO file (file_path,last_modified_date,id_idea) VALUES('$final_file',NOW(), '{$id}')";

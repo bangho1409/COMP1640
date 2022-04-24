@@ -1,10 +1,17 @@
 <?php
-$connect = mysqli_connect('localhost', 'root', '', 'webenterprise2');
-// if user clicks like or dislike button
+// connect to database
+$conn = mysqli_connect('localhost', 'root', '', 'webenterprise2');
+
+
 $id_user = $_SESSION['id_user'];
 
-if (isset($_POST['action'])) {
+if (!$conn) {
+  die("Error connecting to database: " . mysqli_connect_error($conn));
+  exit();
+}
 
+// if user clicks like or dislike button
+if (isset($_POST['action'])) {
   $id_idea = $_POST['id_idea'];
   $action = $_POST['action'];
   switch ($action) {
@@ -29,7 +36,7 @@ if (isset($_POST['action'])) {
   }
 
   // execute query to effect changes in the database ...
-  mysqli_query($connenect, $sql);
+  mysqli_query($conn, $sql);
   echo getRating($id_idea);
   exit(0);
 }
@@ -37,10 +44,10 @@ if (isset($_POST['action'])) {
 // Get total number of likes for a particular post
 function getLikes($id)
 {
-  global $connect;
+  global $conn;
   $sql = "SELECT COUNT(*) FROM reaction
   		  WHERE id_idea = $id AND reaction='like'";
-  $rs = mysqli_query($connect, $sql);
+  $rs = mysqli_query($conn, $sql);
   $result = mysqli_fetch_array($rs);
   return $result[0];
 }
@@ -48,10 +55,10 @@ function getLikes($id)
 // Get total number of dislikes for a particular post
 function getDislikes($id)
 {
-  global $connect;
+  global $conn;
   $sql = "SELECT COUNT(*) FROM reaction
   		  WHERE id_idea = $id AND reaction='dislike'";
-  $rs = mysqli_query($connect, $sql);
+  $rs = mysqli_query($conn, $sql);
   $result = mysqli_fetch_array($rs);
   return $result[0];
 }
@@ -59,13 +66,13 @@ function getDislikes($id)
 // Get total number of likes and dislikes for a particular post
 function getRating($id)
 {
-  global $connect;
+  global $conn;
   $rating = array();
   $likes_query = "SELECT COUNT(*) FROM reaction WHERE id_idea = $id AND reaction='like'";
   $dislikes_query = "SELECT COUNT(*) FROM reaction
 		  			WHERE id_idea = $id AND reaction='dislike'";
-  $likes_rs = mysqli_query($connect, $likes_query);
-  $dislikes_rs = mysqli_query($connect, $dislikes_query);
+  $likes_rs = mysqli_query($conn, $likes_query);
+  $dislikes_rs = mysqli_query($conn, $dislikes_query);
   $likes = mysqli_fetch_array($likes_rs);
   $dislikes = mysqli_fetch_array($dislikes_rs);
   $rating = [
@@ -78,11 +85,12 @@ function getRating($id)
 // Check if user already likes post or not
 function userLiked($id_idea)
 {
-  global $connect;
+  echo "like";
+  global $conn;
   global $id_user;
-  $sql = "SELECT * FROM reaction WHERE id_user = $id_user
-  		  AND id_idea = $id_idea AND reaction='like'";
-  $result = mysqli_query($connect, $sql);
+  $sql = "SELECT * FROM reaction WHERE id_user=$id_user
+  		  AND id_idea=$id_idea AND reaction='like'";
+  $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
   	return true;
   }else{
@@ -93,11 +101,11 @@ function userLiked($id_idea)
 // Check if user already dislikes post or not
 function userDisliked($id_idea)
 {
-  global $connect;
+  global $conn;
   global $id_user;
   $sql = "SELECT * FROM reaction WHERE id_user=$id_user
-  		  AND id_idea = $id_idea AND reaction='dislike'";
-  $result = mysqli_query($connect, $sql);
+  		  AND id_idea=$id_idea AND reaction='dislike'";
+  $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
   	return true;
   }else{
@@ -106,7 +114,7 @@ function userDisliked($id_idea)
 }
 
 $sql = "SELECT * FROM idea";
-$result = mysqli_query($connect, $sql);
-// fetch all posts from database
-// return them as an associative array called $posts
-$posts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$result = mysqli_query($conn, $sql);
+// fetch all idea from database
+// return them as an associative array called $idea
+$idea = mysqli_fetch_all($result, MYSQLI_ASSOC);

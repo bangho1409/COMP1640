@@ -1,5 +1,6 @@
 <?php
 include 'CRUD.php';
+	include 'reaction.php';
 
 $obj = new ideaCRUD();
 $objtag = new categoryCRUD();
@@ -47,6 +48,7 @@ if( !isset($_SESSION['username']) ) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
@@ -88,6 +90,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <p class="blur w3-padding-32 w3-large w3-text-white w3-center"><?php if ($listtag){foreach ($listtag as $itemtag ) {echo $itemtag['tag'];}}?></p>
 </div>
 
+
+<?php foreach ($idea as $ideas) { ?>
+
 <?php  if ($restag = mysqli_fetch_assoc($resutag)) { ?>
 <!-- Grid -->
 <div class="w3-row-padding w3-padding-32 w3-container">
@@ -103,12 +108,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <p class="w3-large"><?php echo $_SESSION['content'] ?></p>
       <!-- Image -->
       <img src="images/library_1.jpeg" width="600"></br>
+
+      <div class="post-info">
+      <!-- if user likes post, style button differently -->
+      	<i <?php if (userLiked($ideas['id_idea'])): ?>
+      			class="fa fa-thumbs-up like-btn"
+      		<?php else: ?>
+      			class="fa fa-thumbs-o-up like-btn"
+      		<?php endif ?>
+      		data-id="<?php echo $ideas['id_idea'] ?>"></i>
+      	<span class="likes"><?php echo getLikes($ideas['id_idea']); ?></span>
+
+      	&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <!-- if user dislikes post, style button differently -->
+      	<i
+      		<?php if (userDisliked($ideas['id_idea'])): ?>
+      			class="fa fa-thumbs-down dislike-btn"
+      		<?php else: ?>
+      			class="fa fa-thumbs-o-down dislike-btn"
+      		<?php endif ?>
+      		data-id="<?php echo $ideas['id_idea'] ?>"></i>
+      	<span class="dislikes"><?php echo getDislikes($ideas['id_idea']); ?></span>
+      </div>
+
       <a href="comment.php?id_idea=<?php echo $_SESSION['id_idea'] ?>">Comment</a>
       <td class="w3-text-grey">&nbsp;&nbsp;&nbsp;&nbsp; -- view <?php echo $_SESSION['view']?> --</td>
-    </div>
+
+      </div>
     </div>
 </div>
-<?php }?>
+<?php } ?>
+<?php } ?>
+
 <?php foreach ($comments as $comment) { ?>
 <div class="comment-wrapper">
       <div class="media-block">
@@ -122,7 +154,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
           </div>
           <hr>
         </div>
-      </div>
+</div>
     </div>
 <?php } ?>
 
@@ -138,6 +170,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
  </div>
 </footer>
 
+<script language="JavaScript" type="text/javascript" src="reaction.js"></script>
 <script>
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
@@ -170,6 +203,8 @@ window.onclick = function(event) {
 }
 
 </script>
+
+
 
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 	include 'CRUD.php';
+
 	$obj = new ideaCRUD();
 	$objtag = new categoryCRUD();
 	if( !isset($_SESSION['username']) ) {
@@ -14,7 +15,6 @@
 	//read data
 	$list = $obj->ReadIdea();
 	$listtag = $objtag->ReadCategory();
-
 
 
 ?>
@@ -75,11 +75,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </header>
 
 <!-- Filter -->
-<div class="dropdown w3-padding-16">
+<?php if($_SESSION['id_role'] == 1 OR $_SESSION['id_role'] == 6) { ?>
 	<form method="post" action="export.php">
 		<input  type="submit" name="exportidea" value="Export Idea" class="w3-margin-bottom w3-round-medium w3-button w3-green btn btn-success" />
 		<input  type="submit" name="exportuser" value="Export User" class="w3-margin-bottom w3-round-medium w3-button w3-green btn btn-success" />
 	</form>
+<?php } ?>
+<div class="dropdown w3-padding-16">
   <button onclick="myFilter()" class="dropbtn w3-round">Filters</button>
   <div id="myDropdown" class="dropdown-content">
     <a value= "trending" href="#">Trending</a>
@@ -124,6 +126,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <?php } ?>
 <?php } ?>
 
+
 <!-- Footer -->
 <footer class="w3-container w3-red w3-center">
   <div class="w3-xlarge w3-padding-32">
@@ -155,7 +158,7 @@ toggle between hiding and showing the dropdown content */
 function myFilter() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
-</script>
 
+</script>
 </body>
 </html>
